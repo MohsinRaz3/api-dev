@@ -27,11 +27,11 @@ export default async function Home() {
     <main >
       <ul className=' flex flex-col sm:flex-row gap-5 flex-wrap'>
         {bookData.map((book: Booktype) =>
-          <div className="py-2 px-4 mx-auto my-5  max-w-sm justify-between bg-emerald-400 rounded-xl shadow-lg space-y-5 ">
+          <div key={bookData.id} className="py-2 px-4 mx-auto my-5  max-w-sm justify-between bg-emerald-400 rounded-xl shadow-lg space-y-5 ">
             <div className='py-10 px-5 flex flex-col justify-center items-center w-60 md:w-80'>
               <li className='text-gray-800 font-semibold text-lg'>{book.name}</li>
 
-              <Link href={`/${book.id}`} > <li className='text-gray-600 py-6'>(View details) </li></Link>
+              <Link key={bookData.id} href={`/${book.id}`} > <li className='text-gray-600 py-6'>(View details) </li></Link>
             </div>
 
           </div>

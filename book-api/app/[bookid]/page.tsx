@@ -3,16 +3,26 @@ import Link from 'next/link';
 import Wrapper from '../Wrapper/page'
 async function getbook(id: number) {
     const res = await fetch(`https://simple-books-api.glitch.me/books/${id}`, { cache: 'no-store' });
+    try {
 
-    if (!res.ok) {
-        throw new Error("Failed to retrive")
+        if (!res.ok) {
+            throw new Error("Failed to retrive")
+        }
+        return res.json()
+    } catch (error) {
+        return (error as { message: string })
     }
-    return res.json()
 }
 
 
 export default async function page({ params }: any) {
     const bookDetails = await getbook(params.bookid)
+
+    // error handling 
+    if (bookDetails.error) {
+        return <h2>{bookDetails.error}</h2>
+    }
+
     return (
         <Wrapper>
             <div className='py-2 px-4 mx-auto my-5  max-w-sm justify-between bg-emerald-400 rounded-xl shadow-lg space-y-5 '>
@@ -26,6 +36,7 @@ export default async function page({ params }: any) {
                         <div className='text-white mt-3 border-b-4 border-double '> {bookDetails.available ? "Available" : "Not in stock"} </div>
                     </div>
                 </div>
+                <div>{bookDetails.error}</div>
             </div>
         </Wrapper>
 
