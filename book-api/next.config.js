@@ -4,8 +4,8 @@ const nextConfig = {
     appDir: true,
   },
   env: {
-    CONTENTFUL_SPACE_ID : "oq08i2ngazpk",
-    CONTENTFUL_ENVIRONMENT : "master"
+    CONTENTFUL_SPACE: "oq08i2ngazpk",
+    CONTENTFUL_ENV: "master"
   }
 }
 
