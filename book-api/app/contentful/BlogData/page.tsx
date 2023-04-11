@@ -3,7 +3,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Wrapper from "@/app/Wrapper/page";
 async function getData() {
     try {
-        const res = await fetch(`https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE}/environments/CONTENTFUL_ENV/entries?access_token=${CONTENTFUL_TOKEN}&content_type=article`, { cache: "no-cache" })
+        const res = await fetch(`https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE}/environments/${CONTENTFUL_ENV}/entries?access_token=${CONTENTFUL_TOKEN}&content_type=article`, { cache: "no-cache" })
 
         if (!res.ok) {
             throw new Error("Failed to retrive")
